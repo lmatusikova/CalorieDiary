@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">CalorieDiary</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string-array name="dates">
+        <item>24. may 2017</item>
+        <item>25. may 2017</item>
+        <item>26. may 2017</item>
+    </string-array>
+
+    <string name="date_format">yyyy-MM-dd</string>
+
+    <string name="openDrawer">Otvoriť</string>
+    <string name="closeDrawer">Zatvoriť</string>
+
+    <string-array name="foodItems">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Snacks</item>
+    </string-array>
+</resources>
