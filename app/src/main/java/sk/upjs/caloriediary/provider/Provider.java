@@ -2,6 +2,7 @@ package sk.upjs.caloriediary.provider;
 
 import android.provider.BaseColumns;
 
+//Zadefinovanie tabuliek - stlpcov v tabulkach
 public interface Provider  {
     public interface Food extends BaseColumns {
         public static final String TABLE_NAME = "Food";
@@ -18,5 +19,6 @@ public interface Provider  {
         public static final String DINNER = "Dinner";
         public static final String SNACKS = "Snacks";
         public static final String WATER = "Water";
+        public static final String WATER_CLICKED = "Water_clicked";
     }
 }

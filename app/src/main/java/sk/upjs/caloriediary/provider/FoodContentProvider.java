@@ -11,6 +11,7 @@ import android.net.Uri;
 import static android.content.ContentResolver.SCHEME_CONTENT;
 import sk.upjs.caloriediary.DatabaseHelper;
 
+//Obsluhuje tabulku Food
 public class FoodContentProvider extends ContentProvider {
 
     private static final int URI_MATCH_NOTES = 0;
@@ -47,8 +48,7 @@ public class FoodContentProvider extends ContentProvider {
 
     @Override
     public String getType(Uri uri) {
-        // TODO: Implement this to handle requests for the MIME type of the data
-        // at the given URI.
+        // nic
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -87,8 +87,8 @@ public class FoodContentProvider extends ContentProvider {
     public Cursor query(Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
-        Cursor cursor = db.query(Provider.Food.TABLE_NAME, null, null, null, null, null, null);
-        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        Cursor cursor = db.query(Provider.Food.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);  //aby sa refreshoval cursor s datami
         return cursor;
     }
 

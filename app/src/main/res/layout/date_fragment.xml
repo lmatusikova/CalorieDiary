@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,48 +16,59 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calorie Budget"
-            android:textSize="16dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/colorGrayDarker"
             android:layout_gravity="center"
-            />
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Calorie Budget"
+            android:textColor="@color/colorGrayDarker"
+            android:textSize="16dp" />
+
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/calorieTextView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:gravity="center"
             android:textSize="20dp"
             android:textColor="@color/colorPrimary"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"/>
 
+    </LinearLayout>
+
     <at.grabner.circleprogress.CircleProgressView
         android:id="@+id/circleView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
-        app:cpv_rimWidth="30dp"
-        app:cpv_rimColor="@color/colorGray"
-        app:cpv_value="0"
-        app:cpv_textSize="30dp"
-        app:cpv_textColor="@color/colorGreen"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         app:cpv_innerContourColor="@color/colorGray"
         app:cpv_outerContourColor="@color/colorGray"
-        />
+        app:cpv_rimColor="@color/colorGray"
+        app:cpv_rimWidth="30dp"
+        app:cpv_textColor="@color/colorGreen"
+        app:cpv_textSize="30dp"
+        app:cpv_value="0" />
 
-    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="25dp">
         <Button
+            android:id="@+id/breakfastButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -65,40 +79,48 @@
             android:textColor="@color/colorGrayDarker"
             android:background="@android:color/transparent"/>
         <Button
+            android:id="@+id/lunchButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Lunch"
             android:textSize="15dp"
+            android:onClick="onLunchClick"
             android:textAllCaps="false"
             android:textColor="@color/colorGrayDarker"
             android:background="@android:color/transparent"
             />
         <Button
+            android:id="@+id/dinnerButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Dinner"
             android:textSize="15dp"
             android:textAllCaps="false"
+            android:onClick="onDinnerClick"
             android:textColor="@color/colorGrayDarker"
             android:background="@android:color/transparent"/>
         <Button
+            android:id="@+id/snacksButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Snacks"
             android:textSize="15dp"
             android:textAllCaps="false"
+            android:onClick="onSnacksClick"
             android:textColor="@color/colorGrayDarker"
             android:background="@android:color/transparent"/>
         <Button
+            android:id="@+id/waterButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Water"
             android:textSize="15dp"
             android:textAllCaps="false"
+            android:onClick="onWaterClick"
             android:textColor="@color/colorGrayDarker"
             android:background="@android:color/transparent"
             android:layout_marginRight="10dp"/>
@@ -110,7 +132,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/breakfastTextView"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="0"
             android:layout_marginLeft="10dp"
@@ -119,7 +142,8 @@
             android:gravity="center"
             android:textColor="@color/colorPrimary"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/lunchTextView"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="0"
             android:layout_weight="1"
@@ -127,7 +151,8 @@
             android:gravity="center"
             android:textColor="@color/colorPrimary"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/dinnerTextView"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="0"
             android:gravity="center"
@@ -135,7 +160,8 @@
             android:textSize="15dp"
             android:textColor="@color/colorPrimary"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/snacksTextView"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="0"
             android:gravity="center"
@@ -143,7 +169,8 @@
             android:textSize="15dp"
             android:textColor="@color/colorPrimary"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/waterTextView"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="0"
             android:gravity="center"
@@ -152,4 +179,8 @@
             android:textColor="@color/colorPrimary"
             android:layout_marginRight="10dp"/>
     </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>
+    </ScrollView>

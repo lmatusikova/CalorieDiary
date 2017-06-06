@@ -1,5 +1,8 @@
 package sk.upjs.caloriediary;
 
+/**
+ * Trieda na vypocet maximalneho prijmu kalorii na den zo zadanych informacii
+ */
 public class CalorieCalculation {
 
     private static final int WOMAN_CONSTANT = 655;

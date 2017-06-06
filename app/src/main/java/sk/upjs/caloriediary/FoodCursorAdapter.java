@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import sk.upjs.caloriediary.provider.Provider;
 
+/**
+ * Definuje styl layoutu a spracuje ho
+ */
 public class FoodCursorAdapter extends CursorAdapter {
 
     private final LayoutInflater inflater;

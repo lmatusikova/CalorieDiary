@@ -2,15 +2,14 @@ package sk.upjs.caloriediary;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
+/**
+ * Aktivita obsahujuca pouzivatelov profil.
+ */
 public class ProfileActivity extends NavigationActivity {
 
     private TextView name;

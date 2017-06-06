@@ -17,6 +17,9 @@ import com.shawnlin.numberpicker.NumberPicker;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * Uvodna aktivita, v ktorej pouzivatel musi vyplnit udaje.
+ */
 public class IntroductionActivity extends AppCompatActivity {
     private EditText nameEditText;
     private RadioButton female;
@@ -64,17 +67,17 @@ public class IntroductionActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.SaveMenuItem) {
-            savePreference();
-            Intent intro = new Intent(this, MainActivity.class);
-            startActivity(intro);
+            savePreferenceAndStart();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void savePreference() {
+    public void savePreferenceAndStart() {
         SharedPreferences.Editor editor = settings.edit();
+
+        //v profile sa nastavi, kedy som si nainstalovala appku...
         String date = datetime.getFormattedDate(this, cal.getTimeInMillis());
         int result;
 
@@ -102,9 +105,19 @@ public class IntroductionActivity extends AppCompatActivity {
             return;
         }
 
+        if(!age.matches("[0-9]+")) {
+            displayWarning2();
+            return;
+        }
+
         String currentWeight = requiredKgText.getText().toString();
         if (currentWeight.equals("")) {
             displayWarning();
+            return;
+        }
+
+        if(!currentWeight.matches("[0-9]+")) {
+            displayWarning2();
             return;
         }
 
@@ -113,6 +126,11 @@ public class IntroductionActivity extends AppCompatActivity {
         String targetWeight = targetEditText.getText().toString();
         if (targetWeight.equals("")) {
             displayWarning();
+            return;
+        }
+
+        if(!targetWeight.matches("[0-9]+")) {
+            displayWarning2();
             return;
         }
 
@@ -137,6 +155,9 @@ public class IntroductionActivity extends AppCompatActivity {
         editor.commit();
 
         Toast.makeText(this, "Data saved!", Toast.LENGTH_SHORT).show();
+
+        Intent intro = new Intent(this, MainActivity.class);
+        startActivity(intro);
     }
 
     private void displayWarning() {
@@ -147,4 +168,14 @@ public class IntroductionActivity extends AppCompatActivity {
             }
         }).show();
     }
+
+    private void displayWarning2() {
+        new AlertDialog.Builder(this).setTitle("Warning").setMessage("You can not enter text!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        }).show();
+    }
+
 }

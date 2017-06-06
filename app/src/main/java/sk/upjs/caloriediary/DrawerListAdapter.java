@@ -13,6 +13,9 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+/**
+ * Trieda na zobrazenie itemov v navigacii
+ */
 public class DrawerListAdapter extends BaseAdapter {
 
     Context context;

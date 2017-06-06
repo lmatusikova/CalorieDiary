@@ -12,6 +12,7 @@ import sk.upjs.caloriediary.DatabaseHelper;
 
 import static android.content.ContentResolver.SCHEME_CONTENT;
 
+//Obsluhuje tabulku Day
 public class DayContentProvider extends ContentProvider {
     private DatabaseHelper databaseHelper;
     public static final String AUTHORITY = "sk.upjs.caloriediary.provider.DayContentProvider";
@@ -24,18 +25,18 @@ public class DayContentProvider extends ContentProvider {
     public static final String NO_NULL_COLUMN_HACK = null;
 
     public DayContentProvider() {
+
     }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        // Implement this to handle requests to delete one or more rows.
+        // nic
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
     public String getType(Uri uri) {
-        // TODO: Implement this to handle requests for the MIME type of the data
-        // at the given URI.
+        // nic
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -60,6 +61,7 @@ public class DayContentProvider extends ContentProvider {
         day.put(Provider.Day.DINNER, values.getAsString(Provider.Day.DINNER));
         day.put(Provider.Day.SNACKS, values.getAsString(Provider.Day.SNACKS));
         day.put(Provider.Day.WATER, values.getAsString(Provider.Day.WATER));
+        day.put(Provider.Day.WATER_CLICKED, values.getAsString(Provider.Day.WATER_CLICKED));
         long newId = db.insert(Provider.Day.TABLE_NAME, NO_NULL_COLUMN_HACK, day);
         return ContentUris.withAppendedId(CONTENT_URI, newId);
     }
@@ -76,7 +78,7 @@ public class DayContentProvider extends ContentProvider {
     public Cursor query(Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
-        Cursor cursor = db.query(Provider.Day.TABLE_NAME, null, null, null, null, null, null);
+        Cursor cursor = db.query(Provider.Day.TABLE_NAME, projection, selection, selectionArgs, null, null, sortOrder);
         return cursor;
     }
 
@@ -87,9 +89,10 @@ public class DayContentProvider extends ContentProvider {
                       String[] selectionArgs) {
         switch(uriMatcher.match(uri)) {
             case URI_MATCH_NOTES:
-                long id = ContentUris.parseId(uri);
+                //long id = ContentUris.parseId(uri);
                 SQLiteDatabase db = databaseHelper.getWritableDatabase();
-                int affectedRows = db.update(Provider.Day.TABLE_NAME, values, Provider.Day._ID + " = ?", new String[] {String.valueOf(id)});
+                int affectedRows = db.update(Provider.Day.TABLE_NAME, values, selection, selectionArgs);
+                return affectedRows;
             default:
                 return 0;
         }

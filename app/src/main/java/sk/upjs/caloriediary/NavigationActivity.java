@@ -15,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import java.util.ArrayList;
 
+/**
+ * Lista navigacie.
+ */
 public class NavigationActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle drawerToggle;
@@ -71,18 +74,22 @@ public class NavigationActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else if (selectedItemTitle.equals("Breakfast")) {
                     Intent intent = new Intent(NavigationActivity.this, FoodActivity.class);
+                    intent.putExtra("part", "Breakfast");
                     startActivity(intent);
                 } else if (selectedItemTitle.equals("Lunch")) {
                     Intent intent = new Intent(NavigationActivity.this, FoodActivity.class);
+                    intent.putExtra("part", "Lunch");
                     startActivity(intent);
                 } else if (selectedItemTitle.equals("Dinner")) {
                     Intent intent = new Intent(NavigationActivity.this, FoodActivity.class);
+                    intent.putExtra("part", "Dinner");
                     startActivity(intent);
                 } else if (selectedItemTitle.equals("Water")) {
                     Intent intent = new Intent(NavigationActivity.this, WaterActivity.class);
                     startActivity(intent);
                 } else if (selectedItemTitle.equals("Snacks")) {
                     Intent intent = new Intent(NavigationActivity.this, FoodActivity.class);
+                    intent.putExtra("part", "Snacks");
                     startActivity(intent);
                 } else if (selectedItemTitle.equals("My Profile")) {
                     Intent intent = new Intent(NavigationActivity.this, ProfileActivity.class);

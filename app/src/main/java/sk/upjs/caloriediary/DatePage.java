@@ -1,6 +1,7 @@
 package sk.upjs.caloriediary;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,20 +14,19 @@ public class DatePage {
 
     static {
         FIRST_DAY_OF_TIME = Calendar.getInstance();
-        FIRST_DAY_OF_TIME.set(2017, Calendar.JUNE, 2);  //tu na treba datum kedy zapnem appku
+        FIRST_DAY_OF_TIME.set(2017, Calendar.JUNE, 5);  //tu na treba datum kedy zapnem appku
         LAST_DAY_OF_TIME = Calendar.getInstance();
-        LAST_DAY_OF_TIME.set(2100, Calendar.DECEMBER, 31);
-        DAYS_OF_TIME = 73413; //(int) ((LAST_DAY_OF_TIME.getTimeInMillis() - FIRST_DAY_OF_TIME.getTimeInMillis()) / (24 * 60 * 60 * 1000));
+        LAST_DAY_OF_TIME.set(2020, Calendar.DECEMBER, 31);
+        DAYS_OF_TIME = 25;
     }
 
     /**
      * Get the position in the ViewPager for a given day
-     *
-     * @param day
-     * @return the position or 0 if day is null
      */
     public static int getPositionForDay(Calendar day) {
         if (day != null) {
+            Log.d("DatePage getPosForDay", String.valueOf(((day.getTimeInMillis() - FIRST_DAY_OF_TIME.getTimeInMillis())
+                    / 86400000 )));
             return (int) ((day.getTimeInMillis() - FIRST_DAY_OF_TIME.getTimeInMillis())
                     / 86400000  //(24 * 60 * 60 * 1000)
             );
@@ -36,15 +36,12 @@ public class DatePage {
 
     /**
      * Get the day for a given position in the ViewPager
-     *
-     * @param position
-     * @return the day
-     * @throws IllegalArgumentException if position is negative
      */
     public static Calendar getDayForPosition(int position) throws IllegalArgumentException {
         if (position < 0) {
             throw new IllegalArgumentException("position cannot be negative");
         }
+        Log.d("DatePage getDayForPosi", "1");
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(FIRST_DAY_OF_TIME.getTimeInMillis());
         cal.add(Calendar.DAY_OF_YEAR, position);
@@ -54,7 +51,7 @@ public class DatePage {
 
     public static String getFormattedDate(Context context, long date) {
         final String defaultPattern = "yyyy-MM-dd";
-
+        Log.d("DatePage getFormattedD", "1");
         String pattern = null;
         if (context != null) {
             pattern = context.getString(R.string.date_format);

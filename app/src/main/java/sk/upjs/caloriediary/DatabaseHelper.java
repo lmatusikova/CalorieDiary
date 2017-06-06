@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import sk.upjs.caloriediary.provider.Provider;
 
+//Vytvara celu databazu a tabulky + vzorove data
+//CREATE TABLE .....
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
@@ -32,27 +34,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(Provider.Food.UNIT, "slice");
         db.insert(Provider.Food.TABLE_NAME, null, contentValues);
 
-        sql_temp = "CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s DATETIME, %s INT, %s INT, %s INT, %s INT, %s INT)";
-        sql = String.format(sql_temp, Provider.Day.TABLE_NAME, Provider.Day._ID, Provider.Day.DATE, Provider.Day.BREAKFAST, Provider.Day.LUNCH, Provider.Day.DINNER, Provider.Day.SNACKS, Provider.Day.WATER);
+        sql_temp = "CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s INT, %s INT, %s INT, %s INT, %s INT, %s TEXT)";
+        sql = String.format(sql_temp, Provider.Day.TABLE_NAME, Provider.Day._ID, Provider.Day.DATE, Provider.Day.BREAKFAST, Provider.Day.LUNCH, Provider.Day.DINNER, Provider.Day.SNACKS, Provider.Day.WATER, Provider.Day.WATER_CLICKED);
         db.execSQL(sql);
 
         contentValues = new ContentValues();
-        contentValues.put(Provider.Day.DATE, "6-1-2017");
-        contentValues.put(Provider.Day.BREAKFAST, 120);
-        contentValues.put(Provider.Day.LUNCH, 250);
-        contentValues.put(Provider.Day.DINNER, 200);
-        contentValues.put(Provider.Day.SNACKS, 15);
+        contentValues.put(Provider.Day.DATE, "2017-06-05");
+        contentValues.put(Provider.Day.BREAKFAST, 100);
+        contentValues.put(Provider.Day.LUNCH, 200);
+        contentValues.put(Provider.Day.DINNER, 30);
+        contentValues.put(Provider.Day.SNACKS, 45);
         contentValues.put(Provider.Day.WATER, 5);
+        contentValues.put(Provider.Day.WATER, "0 1 2 3 4");
         db.insert(Provider.Day.TABLE_NAME, null, contentValues);
-
+/*
         contentValues = new ContentValues();
-        contentValues.put(Provider.Day.DATE, "6-2-2017");
-        contentValues.put(Provider.Day.BREAKFAST, 110);
-        contentValues.put(Provider.Day.LUNCH, 240);
-        contentValues.put(Provider.Day.DINNER, 50);
-        contentValues.put(Provider.Day.SNACKS, 50);
-        contentValues.put(Provider.Day.WATER, 7);
-        db.insert(Provider.Day.TABLE_NAME, null, contentValues);
+        contentValues.put(Provider.Day.DATE, "2017-06-06");
+        contentValues.put(Provider.Day.BREAKFAST, 6);
+        contentValues.put(Provider.Day.LUNCH, 7);
+        contentValues.put(Provider.Day.DINNER, 8);
+        contentValues.put(Provider.Day.SNACKS, 9);
+        contentValues.put(Provider.Day.WATER, 0);
+        contentValues.put(Provider.Day.WATER, "");
+        db.insert(Provider.Day.TABLE_NAME, null, contentValues);*/
 
     }
 
