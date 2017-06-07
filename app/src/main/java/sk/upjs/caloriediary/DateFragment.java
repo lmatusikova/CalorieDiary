@@ -45,7 +45,6 @@ public class DateFragment extends Fragment {
 
     }
 
-    //to co sa vyplni pre dany fragment...
     public static DateFragment newInstance(String date, int calorie) {
         Bundle args = new Bundle();
         args.putString(DATE, date);
@@ -67,6 +66,7 @@ public class DateFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // https://github.com/jakob-grabner/Circle-Progress-View
         circle = (CircleProgressView)view.findViewById(R.id.circleView);
         circle.setBarColor(getResources().getColor(R.color.colorGreen), getResources()
                 .getColor(R.color.colorYellow), getResources().getColor(R.color.colorOrange), getResources().getColor(R.color.colorRed));
@@ -87,6 +87,36 @@ public class DateFragment extends Fragment {
             circle.setMaxValueAllowed(calorieZargs);
             circle.setMaxValue(calorieZargs);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         AsyncQueryHandler queryHandler = new AsyncQueryHandler(getContext().getContentResolver()) {
             @Override

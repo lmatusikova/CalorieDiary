@@ -7,6 +7,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
+// adapter zobrazuje polozku fragmentu, vytvara a nici ich dynamicky
 public abstract class DateFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
     private SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
 

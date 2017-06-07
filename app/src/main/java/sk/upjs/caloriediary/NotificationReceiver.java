@@ -12,6 +12,7 @@ import android.util.Log;
 import java.util.Calendar;
 
 /**
+ * https://karanbalkar.com/2013/07/tutorial-41-using-alarmmanager-and-broadcastreceiver-in-android/
  * when broadcast is detected, start service NotificationAlarmService
  */
 public class NotificationReceiver extends BroadcastReceiver {
@@ -20,14 +21,13 @@ public class NotificationReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent)
     {
        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 9);
-        calendar.set(Calendar.MINUTE, 56);
+        calendar.set(Calendar.HOUR_OF_DAY, 14);
+        calendar.set(Calendar.MINUTE, 22);
         calendar.set(Calendar.SECOND, 0);
 
         if(System.currentTimeMillis() == calendar.getTimeInMillis()) {
             Intent intent1 = new Intent(context, MainActivity.class);
             intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            // intent1.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent1, 0);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context);

@@ -26,6 +26,8 @@ public class IntroductionActivity extends AppCompatActivity {
     private RadioButton male;
     private EditText ageEditText;
     private EditText requiredKgText;
+
+    //https://mvnrepository.com/artifact/com.darwinsys/hirondelle-date4j/1.5.1
     private NumberPicker meterNumberPicker;
     private NumberPicker centimeterNumberPicker;
     private EditText targetEditText;
@@ -62,6 +64,7 @@ public class IntroductionActivity extends AppCompatActivity {
         return true;
     }
 
+    //Obsluhuje item z action baru podla id
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

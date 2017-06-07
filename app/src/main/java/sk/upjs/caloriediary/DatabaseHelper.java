@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import sk.upjs.caloriediary.provider.Provider;
 
 //Vytvara celu databazu a tabulky + vzorove data
-//CREATE TABLE .....
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {

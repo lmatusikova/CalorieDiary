@@ -11,7 +11,7 @@ import android.widget.TextView;
 import sk.upjs.caloriediary.provider.Provider;
 
 /**
- * Definuje styl layoutu a spracuje ho
+ * Zobrazuje data v liste podla poziadaviek
  */
 public class FoodCursorAdapter extends CursorAdapter {
 
