@@ -24,6 +24,7 @@ public class MainActivity extends NavigationActivity {
     private String date;
     private int calorie;
     private String[] dateArray = new String[1];
+    private Calendar calendar;
 
     private PendingIntent pendingIntent;
 
@@ -47,27 +48,56 @@ public class MainActivity extends NavigationActivity {
             viewPager.setAdapter(adapter);
             viewPager.setCurrentItem(DatePage.getPositionForDay(Calendar.getInstance()));
 
-            Calendar calendar = Calendar.getInstance();
-           // calendar.setTimeInMillis(System.currentTimeMillis());
-            calendar.set(Calendar.HOUR_OF_DAY, 19);
-            calendar.set(Calendar.MINUTE, 34);
+         /*  Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 8);
+            calendar.set(Calendar.MINUTE, 57);
             calendar.set(Calendar.SECOND, 0);
          //   calendar.set(Calendar.AM_PM,Calendar.PM);
+
+            Log.d("myIntent", "Robi sa intent");
 
             Intent myIntent = new Intent(this, NotificationReceiver.class);
             pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, myIntent, 0);
 
             AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
           //  alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
-        //    alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntent);
+            alarmManager.setInexactRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntent);
            // alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntent);
-            alarmManager.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntent);
+           // alarmManager.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntent);
+            Log.d("calendar", String.valueOf(calendar.getTimeInMillis()));*/
+
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(calendar == null) {
+            calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 9);
+            calendar.set(Calendar.MINUTE, 56);
+            calendar.set(Calendar.SECOND, 0);
+
+            Intent myIntent = new Intent(this, NotificationReceiver.class);
+            pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, myIntent, 0);
+
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            //  alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+             alarmManager.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntent);
+         //   alarmManager.setInexactRepeating(AlarmManager.RTC, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+
         }
     }
 
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
     }
 
     public class MyDateAdapter extends DateFragmentStatePagerAdapter {

@@ -114,7 +114,6 @@ public class DateFragment extends Fragment {
                     waterTextView.setText(String.valueOf(water));
 
                 }
-                Log.d("Hodnota do kolecka", String.valueOf(breakfast + lunch + dinner + snacks));
                 circle.setValueAnimated(breakfast + lunch + dinner + snacks);
                 circle.setUnit("%");
                 circle.setUnitSize(40);

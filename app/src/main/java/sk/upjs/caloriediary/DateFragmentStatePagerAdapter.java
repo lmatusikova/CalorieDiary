@@ -14,27 +14,20 @@ public abstract class DateFragmentStatePagerAdapter extends FragmentStatePagerAd
         super(fragmentManager);
     }
 
-    // Register the fragment when the item is instantiated
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        Log.d("INSTANTIATE ITEM", "instantiateItem");
         Fragment fragment = (Fragment) super.instantiateItem(container, position);
-        Log.d("Fragment id", String.valueOf(fragment.getId()));
         registeredFragments.put(position, fragment);
         return fragment;
     }
 
-    // Unregister when the item is inactive
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        Log.d("DESTROY ITEM", "destroyItem");
         registeredFragments.remove(position);
         super.destroyItem(container, position, object);
     }
 
-    // Returns the fragment for the position (if instantiated)
     public Fragment getRegisteredFragment(int position) {
-        Log.d("GET REGIST ITEM", "getRegisteredFragment");
         return registeredFragments.get(position);
     }
 

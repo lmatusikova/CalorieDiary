@@ -48,7 +48,6 @@ public class WaterActivity extends NavigationActivity {
         View contentView = inflater.inflate(R.layout.activity_water, null, false);
         drawerLayout.addView(contentView, 0);
 
-        Log.d("Loadujem vodu", "2");
         loadWaterFromDatabase();
         datum = getIntent().getStringExtra("datum");
 
@@ -100,7 +99,6 @@ public class WaterActivity extends NavigationActivity {
                 }
             }
             final String clickedWater = sb.toString();
-            Log.d("String clickedWater", clickedWater);
 
             AsyncQueryHandler handler = new AsyncQueryHandler(getContentResolver()) {
                 @Override
@@ -184,7 +182,6 @@ public class WaterActivity extends NavigationActivity {
             for (int j = 0; j < COLUMN; j++) {
                 imageViews[i][j] = new ImageView(this);
 
-                Log.d("Obsah clicked", String.valueOf(i) +" " + String.valueOf(j) + " " + String.valueOf(clicked[i][j]));
                 if (clicked[i][j]) {
                     imageViews[i][j].setImageDrawable(fullGlassDrawable);
                 } else {
@@ -220,7 +217,6 @@ public class WaterActivity extends NavigationActivity {
         Calendar cal = Calendar.getInstance();
         final String currentDate = DatePage.getFormattedDate(WaterActivity.this, cal.getTimeInMillis());
 
-        Log.d("Resetujem clicked", "1");
         resetClicked();     //zresetuje pole clicked ...
 
         AsyncQueryHandler queryHandler = new AsyncQueryHandler(getContentResolver()) {
@@ -229,7 +225,6 @@ public class WaterActivity extends NavigationActivity {
                 if (cursor.getCount() != 0) {
                     cursor.moveToFirst();
                     string = cursor.getString(cursor.getColumnIndex(Provider.Day.WATER_CLICKED));
-                    Log.d("String z loadWaterFrom", string);
                     if ((string != null) || (!string.equals(""))) {
                         Scanner s = new Scanner(string);
                         while (s.hasNextInt()) {
@@ -243,15 +238,13 @@ public class WaterActivity extends NavigationActivity {
                         }
                     }
                 }
-                Log.d("Volam design", "DESIGN");
                 design();
             }
         };
         queryHandler.startQuery(0, null, DayContentProvider.CONTENT_URI, null, Provider.Day.DATE + " = '" + currentDate + "'", null, null);
 
-        //ked otocim zariadenie aby sa nestratilo vsetko
+        //ked otocim zariadenie
         if (kyblik != null) {
-            Log.d("Restorujem", "RESTORE");
             restoreWaterState(kyblik);
         }
 

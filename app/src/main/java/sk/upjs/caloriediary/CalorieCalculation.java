@@ -31,10 +31,10 @@ public class CalorieCalculation {
     }
 
     public int calculation() {
-        if(gender == 0 ) {  //zena
+        if(gender == 0 ) {  //woman
             result = WOMAN_CONSTANT + (int)((WOMAN_WEIGHT * weight) + (WOMAN_HEIGHT * height) - (WOMAN_AGE * age));
 
-        } else {        //muz
+        } else {        //man
             result = MAN_CONSTANT + (int)((MAN_WEIGHT * weight) + (MAN_HEIGHT * height) - (MAN_AGE * age));
         }
 
